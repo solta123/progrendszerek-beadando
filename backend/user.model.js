@@ -6,7 +6,7 @@ var userSchema = new mongoose.Schema({
     password: { type: String, required: true },
     email: { type: String, required: true },
     accessLevel: { type: String }
-});
+}, { collection: 'users' });
 
 userSchema.pre('save', function(next) {
     const user = this;

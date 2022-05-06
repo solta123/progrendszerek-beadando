@@ -6,10 +6,10 @@ const mongoose = require('mongoose');
 const userModel = mongoose.model('user');
 
 router.route('/login').post((req, res, next) => {
-    if (req.user.username, req.body.password) {
+    if (req.body.username, req.body.password) {
         passport.authenticate('local', function(error, user) {
             if (error) return res.status(500).send(error);
-            req.logIn(user, function(error) {
+            req.login(user, function(error) {
                 if (error) return res.status(500).send(error);
                 return res.status(200).send('Logged in successfully');
             });
@@ -22,19 +22,19 @@ router.route('/login').post((req, res, next) => {
 router.route('/logout').post((req, res, next) => {
     if (req.isAuthenticated()) {
         req.logout();
-        res.status(200).send('Logged out successfully');
+        return res.status(200).send('Logged out successfully');
     } else {
-        return res.status(400).send('User was not logged in');
+        return res.status(403).send('User was not logged in');
     }
 });
 
 router.route('/status').get((req, res, next) => {
     if (req.isAuthenticated()) {
-        return req.status(200).send(req.session.passport);
+        return res.status(200).send(req.session.passport);
     } else {
-        return req.status(403).send('User was not logged in');
+        return res.status(403).send('User was not logged in');
     }
-})
+});
 
 router.route('/user').get((req, res, next) => {
     userModel.find({}, (err, users) => {
@@ -42,6 +42,7 @@ router.route('/user').get((req, res, next) => {
         res.status(200).send(users);
     });
 }).post((req, res, next) => {
+    console.log(req.body)
     if (req.body.username && req.body.email && req.body.password) {
         userModel.findOne({ username: req.body.username }, (err, user) => {
             if (err) return res.status(500).send('Error in DB');
@@ -50,7 +51,7 @@ router.route('/user').get((req, res, next) => {
             }
             const usr = new userModel({
                 username: req.body.username,
-                password: req.body.password,
+                password: req.body.password, 
                 email: req.body.email
             });
             usr.save((error) => {
@@ -62,3 +63,5 @@ router.route('/user').get((req, res, next) => {
         return res.status(400).send('Not all required parameters are passed');
     }
 });
+
+module.exports = router;
