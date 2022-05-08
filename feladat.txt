@@ -2,53 +2,62 @@
 
 Sziasztok,
 
-Összeállítottam a kötelező program követelményeit. Elsősorban a tavalyi, online változat követelményeit vettem alapul, néhány változtatással, amelyek figyelembe vették az idei félév tematikus változásait. Az alábbi komponensek megléte és követelmények teljesülése szükséges a beadandó projekthez:
+Összeállítottam a kötelező program követelményeit. Elsősorban a tavalyi, online változat követelményeit vettem alapul,
+ néhány változtatással, amelyek figyelembe vették az idei félév tematikus változásait. Az alábbi komponensek megléte és 
+ követelmények teljesülése szükséges a beadandó projekthez:
 
   
-
-A kötelező program témája egy tetszőleges webshop implementációja. A webshop által kínált áru konkrét típusa, jellege rátok van bízva, lehet IT szaküzlet, online ételrendelős oldal, Steam-jellegű játéküzlet. A fontos az, hogy három komponensnek kell elkészülnie:
+A kötelező program témája egy tetszőleges webshop implementációja. A webshop által kínált áru konkrét típusa, jellege 
+ rátok van bízva, lehet IT szaküzlet, online ételrendelős oldal, Steam-jellegű játéküzlet. A fontos az, hogy három
+ komponensnek kell elkészülnie:
 
 -egy backend, ami megvalósítja a szerveoldalt
 
-- egy minimalista, különösebb design nélküli frontend, ami kapcsolódik a backendre és rajta keresztül meghívhatóak a REST interfészek, lehet bejelentkezni-kijelentkezni, árut venni, rendeléseket kilistázni
+- egy minimalista, különösebb design nélküli frontend, ami kapcsolódik a backendre és rajta keresztül meghívhatóak a REST
+ interfészek, lehet bejelentkezni-kijelentkezni, árut venni, rendeléseket kilistázni
 
 - dokumentáció
 
-   
 
-Amennyiben a beadandót kihostoljátok Herokura vagy Firebasere az plusz pontot ér, de nem kötelező, elegendő az elkészült programot és dokumentációt bezippelve vagy publikus github linkkel megadni majd a beadási lehetőségnél
+Amennyiben a beadandót kihostoljátok Herokura vagy Firebasere az plusz pontot ér, de nem kötelező, elegendő az 
+elkészült programot és dokumentációt bezippelve vagy publikus github linkkel megadni majd a beadási lehetőségnél
 
-    
 
-FONTOS! A felsorolt három komponens mindegyikéből szükséges valamennyit implementálni a projektmunka sikerességéhez! Az nem elfogadható, ha pl. van frontend és dokumentáció, de backend egyáltalán nincs (hiába jönne ki így is a minimum 50 pont), ellenben ha van egy max pontos backend, egy perfekt dokumentáció és annyi frontend, hogy legalább felhasználóval belépni lehessen és termékeket listázni azzal már egy 2-3 érdemjegy elérhető például
-
+FONTOS! A felsorolt három komponens mindegyikéből szükséges valamennyit implementálni a projektmunka sikerességéhez!
+ Az nem elfogadható, ha pl. van frontend és dokumentáció, de backend egyáltalán nincs (hiába jönne ki így is a minimum 50 pont), 
+ ellenben ha van egy max pontos backend, egy perfekt dokumentáció és annyi frontend, hogy legalább felhasználóval belépni 
+ lehessen és termékeket listázni azzal már egy 2-3 érdemjegy elérhető például
     
 
 Angular alkalmazás (45p):
-- külcsín nem számít, nyugodtan lehet "ronda" az alkalmazás, mindössze a login és hibakezelő/404 komponens mellett elég ha van két-három komponens, amelyek segítségével a felhasználó képes termékeket listázni, vásárolni
+- külcsín nem számít, nyugodtan lehet "ronda" az alkalmazás, mindössze a login és hibakezelő/404 komponens mellett elég 
+ha van két-három komponens, amelyek segítségével a felhasználó képes termékeket listázni, vásárolni
 - legyen routing és authguard, a login és 404 hiba kivételével mindent csak bejelentkezés után lehessen elérni
 
 - a webapp legyen hostolva a NodeJS szerveren
 
-   
 
 NodeJS + MongoDB: (45p)
 - NodeJS alapú regisztráció és bejelentkezés a Passport JS segítségével
-- a MongoDB tárolja az árukészletet is, ezt lekérni csak regisztrált felhasználók kérhetik, módosítani, új árut felvenni pedig csak adminisztrátorok (admin felületet nem muszáj Angularban csinálni, erre elég, ha REST interfész van)
+- a MongoDB tárolja az árukészletet is, ezt lekérni csak regisztrált felhasználók kérhetik, módosítani, 
+új árut felvenni pedig csak adminisztrátorok (admin felületet nem muszáj Angularban csinálni, erre elég, ha REST interfész van)
 
 - felhasználók jelszavai hashelve kerüljenek eltárolásra
-- a CORS probléma legyen lekezelve vagy whitelist segítségével, vagy úgy, hogy a NodeJS szerver hostolja a lebuildelt Angular appot is
+- a CORS probléma legyen lekezelve vagy whitelist segítségével, vagy úgy, hogy a NodeJS szerver hostolja a lebuildelt 
+Angular appot is
 
-   
 
 Dokumentáció (10 pont):
-- részletes, munkanapló szerű leírás, mely lebontja, hogy milyen sorrendben, milyen ütemben zajlott a fejlesztés (akár dátumozva - az nem jelent pontlevonást, ha esetleg a bejegyzések szerint az utolsó héten készült el minden), milyen akadályok, problémák, kihívások merültek fel,
-- a dokumentációt zárja egy screenshotokkal ellátott példa arra, hogyan zajlik az alkalmazás használata és hogyan ellenőrizhető az egyes lépések eredménye
+- részletes, munkanapló szerű leírás, mely lebontja, hogy milyen sorrendben, milyen ütemben zajlott a fejlesztés 
+(akár dátumozva - az nem jelent pontlevonást, ha esetleg a bejegyzések szerint az utolsó héten készült el minden),
+ milyen akadályok, problémák, kihívások merültek fel,
+- a dokumentációt zárja egy screenshotokkal ellátott példa arra, hogyan zajlik az alkalmazás használata és hogyan
+ ellenőrizhető az egyes lépések eredménye
 
-   
 
-Az értékeléshez szükséges a forráskód (.zip, github, bitbucket mind elfogadott, bár utóbbi kettő a szebb és tisztább megoldás) és a pdf formátumú dokumentáció feltöltése. Alapvetően egyik komponenst sem kell túlgondolni, az adatmodellek lehetnek egyszerűek (de a gyakorlaton vett árukeresős példánál azért bonyolultabbak), forráskódrészletek felhasználhatóak a gyakorlatokon átvett anyagból.
-
-   
+Az értékeléshez szükséges a forráskód (.zip, github, bitbucket mind elfogadott, bár utóbbi kettő a szebb és tisztább megoldás)
+ és a pdf formátumú dokumentáció feltöltése. Alapvetően egyik komponenst sem kell túlgondolni, az adatmodellek lehetnek
+  egyszerűek (de a gyakorlaton vett árukeresős példánál azért bonyolultabbak), forráskódrészletek felhasználhatóak a
+   gyakorlatokon átvett anyagból.
 
 Beadási határidő: május 8. 23:59

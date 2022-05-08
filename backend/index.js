@@ -13,7 +13,26 @@ const dbUrl = 'mongodb+srv://admin:NzopQtzVWab5oOdZ@progrendszerek-beadando.odrh
 
 mongoose.connect(dbUrl);
 
-app.use(cors());
+const whitelist = [
+    'https://<project_id>.web.app', 
+    'https://<project_id>.firebaseapp.com', 
+    'http://localhost:4200'
+];
+
+var corsOptions = {
+    origin: function (origin, callback) {
+      if (whitelist.indexOf(origin) !== -1 || !origin) {
+        callback(null, true)
+      } else {
+        callback(new Error('Not allowed by CORS'))
+      }
+    },
+    credentials: true,
+    allowedHeaders: ['Content-Type', 'Authorization', 'Access-Control-Allow-Origin', 
+    'Origin', 'Accept']
+  };
+
+app.use(cors(corsOptions));
 
 mongoose.connection.on('connected', () => {
     console.log('Connected to DB successfully!');
@@ -35,7 +54,7 @@ passport.use('local', new localStrategy(function(username, password, done) {
         if (err) return done('Error during query');
         if (!user) return done('No user found with this name', null);
         user.comparePasswords(password, function(err, isMatch) {
-            if (error) return done(error, false);
+            if (err) return done(error, false);
             return done(null, isMatch);
         })
     })
