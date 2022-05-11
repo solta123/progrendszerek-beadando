@@ -28,13 +28,11 @@ export class LoginComponent implements OnInit {
   }
 
   submit(): void {
-    console.log('submit called')
     if (this.form.controls.username.valid && this.form.controls.password.valid) {
-      console.log('na login happening')
       this.loginService.login(this.form.controls.username.value, this.form.controls.password.value).subscribe(msg => {
-        console.log(msg);
+        console.log(msg)
         localStorage.setItem('user', this.form.controls.username.value);
-        this.router.navigate(['/list']);
+        this.router.navigateByUrl('/main/store');
       }, error => {
         console.log(error);
       })

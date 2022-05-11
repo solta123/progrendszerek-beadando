@@ -9,7 +9,7 @@ const localStrategy = require('passport-local').Strategy;
 const expressSession = require('express-session');
 
 const port = process.env.PORT || 3000;
-const dbUrl = 'mongodb+srv://admin:NzopQtzVWab5oOdZ@progrendszerek-beadando.odrhv.mongodb.net/progrendszerek-beadando-cluster?retryWrites=true&w=majority';
+const dbUrl = '';
 
 mongoose.connect(dbUrl);
 
@@ -43,6 +43,7 @@ mongoose.connection.on('error', error => {
 });
 
 require('./user.model');
+require('./product.model');
 const userModel = mongoose.model('user');
 
 app.use(cookieParser());
@@ -55,7 +56,7 @@ passport.use('local', new localStrategy(function(username, password, done) {
         if (!user) return done('No user found with this name', null);
         user.comparePasswords(password, function(err, isMatch) {
             if (err) return done(error, false);
-            return done(null, isMatch);
+            return done(null, user.accessLevel);
         })
     })
 }));

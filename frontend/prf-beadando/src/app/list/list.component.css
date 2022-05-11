@@ -1,0 +1,31 @@
+.container {
+    padding: 0 5%;
+}
+
+mat-card {
+    display: grid;
+    grid-template-columns: 30% auto;
+    gap: 1vw;
+    margin: 2vh 0;
+}
+
+.image-item {
+    grid-row: 1;
+    grid-column: 1;
+}
+
+.details-field {
+    grid-row: 1;
+    grid-column: 2;
+    text-align: left;
+}
+
+.description {
+    grid-row: 2;
+    grid-column: 1 / span 2;
+    text-align: left;
+}
+
+img {
+    max-width: 100%;
+}

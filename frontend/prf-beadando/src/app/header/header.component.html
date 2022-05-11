@@ -1,0 +1,26 @@
+<mat-toolbar color="primary">
+    <span>
+        <h1>FakeSteam</h1>
+    </span>
+    <span style="float: right; position: absolute; right: 10px;">
+        <button mat-button (click)="logout()">Logout</button>
+    </span>
+    <span>
+        <button mat-button (click)="status()">Status</button>
+    </span>
+</mat-toolbar>
+
+
+<nav mat-tab-nav-bar>
+    <a 
+        mat-tab-link 
+        *ngFor="let tab of tabs" 
+        [routerLink]="tab.link" 
+        [active]="activeLink === tab.link"
+        (click)="activeLink = tab.link"
+    >
+        {{tab.title}}
+    </a>
+</nav>
+
+<router-outlet></router-outlet>

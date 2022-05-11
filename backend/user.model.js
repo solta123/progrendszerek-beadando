@@ -11,7 +11,6 @@ var userSchema = new mongoose.Schema({
 userSchema.pre('save', function(next) {
     const user = this;
     if (user.isModified('password')) {
-        user.accessLevel = 'basic';
         bcrypt.genSalt(10, function(err, salt) {
             if (err) {
                 console.log('Error while generating salt');

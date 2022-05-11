@@ -20,11 +20,15 @@ export class LoginService {
   }
 
   logout() {
-    return this.http.post(environment.serverUrl + '/logout', 
+    return this.http.post(environment.serverUrl + '/logout', {},
       {
         withCredentials: true,
         responseType: 'text'
       }
     );
+  }
+
+  status() {
+    return this.http.get(environment.serverUrl + '/status');
   }
 }

@@ -1,1 +1,21 @@
-<p>list works!</p>
+<div class="container">
+    <mat-card *ngFor="let product of products">
+        <div class="image-item">
+            <img [src]="product.image" alt="../../assets/no-image.png">
+        </div>
+        <div class="description-field">
+            <h1>{{product.title}}</h1>
+            <div>Developed by {{product.developer}}</div>
+            <div>Published by {{product.publisher}}</div>
+            <div><i>Release Date: {{product.releaseDate | date }}</i></div>
+        </div>
+        <div class="description">
+            <div><i>{{product.description}}</i></div>
+            <div style="text-align: right;">
+                <button mat-raised-button color="primary">
+                    Buy now for {{product.price}}€
+                </button>
+            </div>
+        </div>
+    </mat-card>
+</div>
