@@ -1,0 +1,11 @@
+mat-form-field {
+    display: block;
+}
+
+mat-card-title {
+    padding: 2vh 2vw;
+}
+
+form {
+    padding: 0 5%;
+}

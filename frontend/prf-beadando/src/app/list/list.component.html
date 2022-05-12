@@ -12,7 +12,10 @@
         <div class="description">
             <div><i>{{product.description}}</i></div>
             <div style="text-align: right;">
-                <button mat-raised-button color="primary">
+                <button mat-icon-button (click)="edit(product)">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-raised-button color="primary" (click)="buy(product.title)" *ngIf="product.price">
                     Buy now for {{product.price}}€
                 </button>
             </div>

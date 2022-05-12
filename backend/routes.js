@@ -103,6 +103,23 @@ router.route('/product').get((req, res, next) => {
     } else {
         return res.status(400).send('Title is not passed or user is not authenticated');
     }
+}).put((req, res, next) => {
+    if (req.isAuthenticated() && req.body.title) {
+        productModel.findOne({ title: req.body.title }, (err, product) => {
+            if (err) return res.status(500).send('Error in DB');
+            if (product) {
+                product.value = req.body.value;
+                product.save((error) => {
+                    if(error) return res.status(500).send('Error while saving to the DB');
+                    return res.status(200).send('Successfully modified product in DB');
+                });
+            } else {
+                return res.status(400).send('No such product in DB');
+            }
+        });
+    } else {
+        return res.status(400).send('Title is not passed or user is not authenticated');
+    }
 });
 
 module.exports = router;

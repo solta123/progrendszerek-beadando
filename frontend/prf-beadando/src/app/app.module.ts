@@ -19,6 +19,9 @@ import { HeaderComponent } from './header/header.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { OrdersComponent } from './orders/orders.component';
 import { AddProductComponent } from './add-product/add-product.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -42,7 +45,10 @@ import { AddProductComponent } from './add-product/add-product.component';
     MatInputModule,
     HttpClientModule,
     MatToolbarModule,
-    MatTabsModule
+    MatTabsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

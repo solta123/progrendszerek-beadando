@@ -22,4 +22,12 @@ export class ProductService {
       { responseType: 'text', withCredentials: true }
     );
   }
+
+  editProduct(product) {
+    return this.http.put(
+      environment.serverUrl + '/product',
+      { ...product },
+      { responseType: 'text', withCredentials: true }
+    );
+  }
 }

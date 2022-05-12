@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { LoginService } from '../services/login.service';
 
 @Component({
@@ -12,10 +12,6 @@ export class HeaderComponent implements OnInit {
     {
       title: 'Store',
       link: '/main/store'
-    },
-    {
-      title: 'My Games',
-      link: '/main/orders'
     },
     {
       title: 'Add New Product',
