@@ -1,5 +1,5 @@
 <div class="container">
-    <mat-card *ngFor="let product of products">
+    <mat-card *ngFor="let product of products, let i = index">
         <div class="image-item">
             <img [src]="product.image" alt="../../assets/no-image.png">
         </div>
@@ -11,11 +11,14 @@
         </div>
         <div class="description">
             <div><i>{{product.description}}</i></div>
-            <div style="text-align: right;">
-                <button mat-icon-button (click)="edit(product)">
+            <div style="text-align: right; padding-top: 1vh;">
+                <button mat-icon-button (click)="edit(product)" *ngIf="isAdmin">
                     <mat-icon>edit</mat-icon>
                 </button>
-                <button mat-raised-button color="primary" (click)="buy(product.title)" *ngIf="product.price">
+                <button mat-button *ngIf="owned[i]">
+                    You already own this game
+                </button>
+                <button mat-raised-button color="primary" (click)="buy(product, i)" *ngIf="product.price && !owned[i]">
                     Buy now for {{product.price}}€
                 </button>
             </div>

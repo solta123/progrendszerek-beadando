@@ -1,16 +1,11 @@
 <div *ngIf="!orders.length">
-    No orders on the store yet
+    You got no games yet :(
 </div>
 
 <table mat-table [dataSource]="orders" class="mat-elevation-z8" *ngIf="orders.length">
     <ng-container matColumnDef="date">
         <th mat-header-cell *matHeaderCellDef>Date</th>
         <td mat-cell *matCellDef="let element">{{element.date | date}}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="username">
-        <th mat-header-cell *matHeaderCellDef>Username</th>
-        <td mat-cell *matCellDef="let element">{{element.username}}</td>
     </ng-container>
 
     <ng-container matColumnDef="title">

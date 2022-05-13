@@ -1,5 +1,9 @@
 <form [formGroup]="form" (ngSubmit)="submit()">
-    <mat-card-title>Add a new game to the store</mat-card-title>
+    <mat-card-title>
+        <span *ngIf="isEdit">Edit</span>
+        <span *ngIf="!isEdit">Add</span>
+         a new game to the store
+    </mat-card-title>
     <mat-form-field appearance="fill">
         <mat-label>Title</mat-label>
         <input matInput type="text" formControlName="title" required>

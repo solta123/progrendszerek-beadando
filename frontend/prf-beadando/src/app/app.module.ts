@@ -22,6 +22,10 @@ import { AddProductComponent } from './add-product/add-product.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
+import { MyOrdersComponent } from './my-orders/my-orders.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTableModule } from '@angular/material/table';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -32,7 +36,8 @@ import { MatIconModule } from '@angular/material/icon';
     ErrorComponent,
     HeaderComponent,
     OrdersComponent,
-    AddProductComponent
+    AddProductComponent,
+    MyOrdersComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +53,10 @@ import { MatIconModule } from '@angular/material/icon';
     MatTabsModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatIconModule
+    MatIconModule,
+    MatSnackBarModule,
+    MatTableModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

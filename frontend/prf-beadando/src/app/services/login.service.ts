@@ -31,4 +31,12 @@ export class LoginService {
   status() {
     return this.http.get(environment.serverUrl + '/status');
   }
+
+  signup(userData) {
+    return this.http.post(
+      environment.serverUrl + '/user',
+      { ...userData },
+      { withCredentials: true, responseType: 'text' }
+    )
+  }
 }

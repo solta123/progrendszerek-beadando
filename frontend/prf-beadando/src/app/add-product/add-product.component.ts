@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../services/product.service';
 
 @Component({
@@ -18,13 +19,17 @@ export class AddProductComponent implements OnInit {
     developer: new FormControl(''),
     publisher: new FormControl('')
   });
+  isEdit = false;
 
-  constructor(private productService: ProductService, private route: ActivatedRoute) { }
+  constructor(
+    private productService: ProductService,
+    private snackBar: MatSnackBar,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
-    console.log(history.state)
-
     if (history.state?.title) {
+      this.isEdit = true
       const { title, price, description, releaseDate, image, developer, publisher } = history.state;
       this.form.setValue({
         title,
@@ -39,23 +44,22 @@ export class AddProductComponent implements OnInit {
   }
 
   submit(): void {
-    console.log(this.form.value)
     if (history.state?.title) {
-      console.log('edit')
       this.productService.editProduct(this.form.value).subscribe(msg => {
-        console.log(msg)
+        this.snackBar.open(msg, 'Thanks!', { duration: 3000 });
+        this.router.navigateByUrl('/main/store');
+        this.form.reset();
+        this.isEdit = false;
       }, error => {
         console.log(error)
       });
     } else {
-      console.log('add')
       this.productService.addProduct(this.form.value).subscribe(msg => {
-        console.log(msg)
-        // this.form.reset();
+        this.snackBar.open(msg, 'Thanks!', { duration: 3000 });
+        this.form.reset();
       }, error => {
         console.log(error)
         if (error.error === 'Product already exists') {
-          console.log('Product already exists')
           this.form.controls.title.setErrors({ incorrect: 'Product already exists' });
         } 
       });

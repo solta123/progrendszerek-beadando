@@ -17,8 +17,10 @@ export class LoginComponent implements OnInit {
   constructor(private loginService: LoginService, private router: Router) { }
 
   ngOnInit(): void {
-    if (localStorage.getItem('user')) {
+    if (localStorage.getItem('user') || localStorage.getItem('accessLevel')) {
       localStorage.removeItem('user');
+      localStorage.removeItem('accessLevel');
+      sessionStorage.removeItem('mygames');
       this.loginService.logout().subscribe(msg => {
         console.log(msg);
       }, error => {
@@ -30,7 +32,7 @@ export class LoginComponent implements OnInit {
   submit(): void {
     if (this.form.controls.username.valid && this.form.controls.password.valid) {
       this.loginService.login(this.form.controls.username.value, this.form.controls.password.value).subscribe(msg => {
-        console.log(msg)
+        localStorage.setItem('accessLevel', msg.body)
         localStorage.setItem('user', this.form.controls.username.value);
         this.router.navigateByUrl('/main/store');
       }, error => {

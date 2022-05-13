@@ -44,6 +44,7 @@ mongoose.connection.on('error', error => {
 
 require('./user.model');
 require('./product.model');
+require('./order.model');
 const userModel = mongoose.model('user');
 
 app.use(cookieParser());
