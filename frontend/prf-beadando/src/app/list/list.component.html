@@ -5,12 +5,12 @@
         </div>
         <div class="description-field">
             <h1>{{product.title}}</h1>
-            <div>Developed by {{product.developer}}</div>
-            <div>Published by {{product.publisher}}</div>
-            <div><i>Release Date: {{product.releaseDate | date }}</i></div>
+            <div *ngIf="product.developer">Developed by {{product.developer}}</div>
+            <div *ngIf="product.publisher">Published by {{product.publisher}}</div>
+            <div *ngIf="product.releaseDate"><i>Release Date: {{product.releaseDate | date }}</i></div>
         </div>
         <div class="description">
-            <div><i>{{product.description}}</i></div>
+            <div *ngIf="product.description"><i>{{product.description}}</i></div>
             <div style="text-align: right; padding-top: 1vh;">
                 <button mat-icon-button (click)="edit(product)" *ngIf="isAdmin">
                     <mat-icon>edit</mat-icon>
