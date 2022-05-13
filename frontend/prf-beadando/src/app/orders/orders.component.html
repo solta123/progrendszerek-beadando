@@ -4,8 +4,8 @@
 
 <table mat-table [dataSource]="orders" class="mat-elevation-z8" *ngIf="orders.length">
     <ng-container matColumnDef="date">
-        <th mat-header-cell *matHeaderCellDef>Date</th>
-        <td mat-cell *matCellDef="let element">{{element.date | date}}</td>
+        <th mat-header-cell *matHeaderCellDef>Purchase Date</th>
+        <td mat-cell *matCellDef="let element">{{element.date | date: 'medium'}}</td>
     </ng-container>
 
     <ng-container matColumnDef="username">
